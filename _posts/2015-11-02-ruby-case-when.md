@@ -5,8 +5,8 @@ categories: ruby benchmark
 ---
 ## Case
 
-In other languages also know an ```switch``` statement, ruby uses ```case``` to build
-statements that matches against conditions:
+In other languages also know an ```switch``` statement, ruby uses ```case``` to match a value
+against conditions:
 
 {% highlight ruby %}
 something = rand(10)
@@ -79,7 +79,7 @@ is just syntactic sugar for
 
 ```foo.===(bar)```
 
-What Ruby does is to call the ```===``` on the object you passed to ```when```, supplying the value you passed to ```case``` as the single argument.
+What Ruby does is to call the ```===``` method on the object you passed to ```when```, supplying the value you passed to ```case``` as the single argument.
 
 ### Procs and Lambdas
 
@@ -174,5 +174,5 @@ case with inlined lambdas
              if/else      5.182M (±11.8%) i/s -     25.545M
 {% endhighlight %}
 
-Of course the runtime of the code depends on the value of ```thing``` adjust it so that first, second or third case is true to see the differences.
+Of course the runtime of the code depends on the value of ```thing```. Adjust it so that first, second or third case is matched to see the differences.
 But in any case: using ```Procs``` is slower than the corresponding ```if/else```.
