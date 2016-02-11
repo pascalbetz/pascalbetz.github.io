@@ -1,0 +1,23 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+
+# Setup
+title:               Pascal Betz
+tagline:             ''
+description:         ''
+url:                 http://pascalbetz.github.io
+baseurl:             ''
+paginate:            5
+
+# About/contact
+author:
+  name:              Pascal Betz
+  url:               http://pascalbetz.github.io
+  email:             pascal.betz@gmail.com
+
+# Custom vars
+version:             1.0.0
+
+gems: [jekyll-paginate]
