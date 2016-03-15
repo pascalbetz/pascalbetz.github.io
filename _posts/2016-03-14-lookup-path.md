@@ -139,3 +139,5 @@ p Klass.new.singleton_class
 #<Class:#<Klass:0x007fc93913fbf0>>
 #<Class:#<Klass:0x007fc93913fad8>>
 {% endhighlight %}
+
+This ancestry also shows how ruby looks up methods. It does not make complicate decisions of where to look first. It just walks up the hierarchy and calls the first matching method it can find. So if the singleton class does not respond to the method, then the prepended modules will be checked until the root is reached.
