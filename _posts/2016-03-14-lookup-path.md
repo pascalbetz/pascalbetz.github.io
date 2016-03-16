@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What is the method lookup path in ruby?
+title: What is the method lookup path in Ruby?
 categories: ruby
 ---
 
@@ -102,7 +102,7 @@ then the definitions from ```Baz``` will take precedence.
 
 And of course if you do not call ```super``` then none of the other implementations will be called.
 
-So, now that this is solved...let's look at another way this can be determined: ```ancestors```. The documentation says that this will "Returns a list of modules included in mod (including mod itself).".
+So, now that this is solved...let's look at another way this can be determined: ```ancestors```. The documentation says that this "Returns a list of modules included in mod (including mod itself).".
 If we extend above code to print the list of ancestors:
 
 {% highlight ruby %}
@@ -140,4 +140,4 @@ p Klass.new.singleton_class
 #<Class:#<Klass:0x007fc93913fad8>>
 {% endhighlight %}
 
-This ancestry also shows how ruby looks up methods. It does not make complicate decisions of where to look first. It just walks up the hierarchy and calls the first matching method it can find. So if the singleton class does not respond to the method, then the prepended modules will be checked until the root is reached.
+This ancestry also shows how Ruby looks up methods. It does not make complicate decisions of where to look first. It just walks up the hierarchy and calls the first matching method it can find. So if the singleton class does not respond to the method, then the prepended modules will be checked until the root is reached.
