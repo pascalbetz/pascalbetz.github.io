@@ -95,6 +95,16 @@ end
 
 {% endhighlight %}
 
+Now we need to switch the schema dump format because raw SQL statements are not reflected in ```schema.rb```
+
+Add following line to your ```application.rb```
+
+{% highlight ruby%}
+config.active_record.schema_format = :sql
+{% endhighlight %}
+
+and then you'll have a ```structure.sql``` instead of ```schema.rb``` after you run the migrations
+
 Multiple things to notice:
 
 * This is for SQLite, some functions might be different for other databases (string concatenation, max)
@@ -102,7 +112,7 @@ Multiple things to notice:
 * I added a ```label``` column to avoid N+1 selects when displaying the results
 * The ```searchable_id``` and ```searchable_type``` column are named like this to make use of Rails polymorphic ```belongs_to``` association
 * The different selects need to return tables of the same size/column order
-* There is an ```updated_at``` column. I've added it to have a value i can use for odering
+* There is an ```updated_at``` column. I've added it to have a value I can use for ordering
 
 With this table we can create a ```Search``` model and use it to search inside all ```Artist``` and ```Album``` records.
 
@@ -122,6 +132,9 @@ That's it. You can now use it like:
   Search Load (0.4ms)  SELECT "searches".* FROM "searches" WHERE (reverse_index like '%slash%')
  => #<ActiveRecord::Relation [#<Search reverse_index: "Saul HudsonSlash", searchable_id: 2, searchable_type: "Artist", label: "Saul Hudson", updated_at: "2016-04-19 14:00:21.146916">, #<Search reverse_index: "Slash", searchable_id: 1, searchable_type: "Album", label: "Slash", updated_at: "2016-04-19 14:00:21.151739">]>
 {% endhighlight %}
+
+
+
 
 Some notes about this solution:
 
